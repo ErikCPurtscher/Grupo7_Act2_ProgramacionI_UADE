@@ -1,3 +1,4 @@
+from .procesamiento import procesar_palabras
 
 def longitud_texto(texto):
     longitud = len(texto)
@@ -5,7 +6,7 @@ def longitud_texto(texto):
 
 def cantidad_palabras(palabras):
     texto_normal = normalizar_texto(texto)
-    palabras = separar_palabras(texto_normal)
+    palabras = procesar_palabras(texto_normal)
     cantidad = len(palabras)
     return cantidad
 
@@ -18,7 +19,7 @@ def verificar_existencia(expresion, texto):
 
 def analizar_contenido(texto):
     texto_normal = normalizar_texto(texto)
-    palabras = procesar_texto(texto_normal)
+    palabras = procesar_palabras(texto_normal)
 
     longitud = longitud_texto(texto_normal)
     

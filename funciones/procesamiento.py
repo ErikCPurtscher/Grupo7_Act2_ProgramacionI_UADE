@@ -67,14 +67,10 @@ def ingresar_registro(matriz):
 
 def procesar_palabras(matriz):
     registro = consultar_registro(matriz)
-    if registro is None:
-        return None
-
     
     oraciones = registro[TEXTO]
     palabras = oraciones.split(". ")
     texto = ". ".join([oracion.strip().capitalize() for oracion in palabras])
-
 
     print("texto Original:", oraciones)
     print("Texto limpio:", texto)

@@ -40,4 +40,4 @@ def consultar_registro(registros):
         return registros[pos]
     else:
         print("El registro", registro, "no existe")
-        return None        
+        return      

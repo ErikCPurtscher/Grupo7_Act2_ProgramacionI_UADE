@@ -1,5 +1,5 @@
-from .validaciones import pedir_entero_positivo,pedir_entero_en_rango
-from .procesamiento import ingresar_registro
+from funciones.validaciones import pedir_entero_en_rango
+from .procesamiento import ingresar_registro, procesar_palabras
 
 
 
@@ -24,17 +24,17 @@ def ejecutar_opcion(opcion, matriz):
     if opcion == 1:
         ingresar_registro(matriz)
     elif opcion == 2:
-        print("agregar")
-    elif opcion == 3:
         print("Normalizar_texto(matriz)")
+    elif opcion == 3:
+        print("analizar_contenido(matriz)")
     elif opcion == 4:
-        print("analizar(matriz)")
+        procesar_palabras(matriz)
     elif opcion == 5:
-        print("procesar_palabras(matriz)")
-    elif opcion == 6:
         print("reemplazar_extraer(matriz)")
-    elif opcion == 7:
+    elif opcion == 6:
         print("transformar(matriz)")
+    elif opcion == 7:
+        print("")
     elif opcion == 8:
         print("permitir_recuperar(matriz)")
  
