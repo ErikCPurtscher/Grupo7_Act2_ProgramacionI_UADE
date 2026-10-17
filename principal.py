@@ -1,11 +1,11 @@
 from funciones.menu import iniciar_menu
-from datos import reseñas
+from datos import resenias
 
  
  
 def main():
     print("Bienvenido al sistema.")
-    iniciar_menu(reseñas)
+    iniciar_menu(resenias)
  
  
 main()
