@@ -1,5 +1,5 @@
 from datos import ID, USUARIO, TITULO, TEXTO, PUNTUACION, LIKES, PUNTUACION_MIN, PUNTUACION_MAX
-from .validaciones import pedir_entero, pedir_cadena_validada,pedir_entero_en_rango
+from .validaciones import pedir_entero_positivo, pedir_cadena_validada,pedir_entero_en_rango
 
 def buscar_registro(registros, codigo):
     encontrado = False
@@ -17,7 +17,7 @@ def consultar_registro(registros):
     print("CONSULTAR REGISTRO")
     print()
     print("Indique el registro a consultar: ", end= "")
-    registro = validar_positivo()   
+    registro = pedir_entero_positivo()   
     pos = buscar_registro(registros, registro)
     registro_consultado = []
     if pos !=-1 :

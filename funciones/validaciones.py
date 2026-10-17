@@ -10,6 +10,8 @@ def pedir_entero_positivo(mensaje):
         except ValueError as error:
             print(f'Error: {error}')
             print("Debe ingresar un número entero positivo.")
+        else:
+            return numero
 
 def validar_rango(valor, minimo, maximo):
     if valor < minimo or valor > maximo:
