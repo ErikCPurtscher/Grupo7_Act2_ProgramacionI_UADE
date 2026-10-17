@@ -1,3 +1,8 @@
+from datos import ID, USUARIO, TITULO, TEXTO, PUNTUACION, LIKES, PUNTUACION_MIN, PUNTUACION_MAX
+from .validaciones import pedir_entero, pedir_cadena_validada,pedir_entero_en_rango
+
+
+
 def buscar_registro(registros, codigo):
     encontrado = False
     pos = 0
@@ -9,6 +14,8 @@ def buscar_registro(registros, codigo):
     if not encontrado:
         pos = -1
     return pos
+
+
 
 def consultar_registro(registros):
     print("CONSULTAR REGISTRO")
@@ -42,4 +49,69 @@ def alta_registro(registros):
     socios.append(socio)
 
     print("¡Socio registrado con éxito!")
+
+
+
+
+#Nueva función para el ingreso de registro (opcion 1)
+
+def ingresar_registro(matriz):
+
+    print("\n" + "=" * 54)
+    print("            INGRESAR NUEVO REGISTRO DE RESEÑA")
+    print("=" * 54)
+
+    if len(matriz) > 0:
+        nuevo_id = matriz[-1][ID] + 1
+    else:
+        nuevo_id = 1
+
+    print(f"ID asignado al nuevo registro: {nuevo_id}\n")
+
+    usuario = pedir_cadena_validada(
+        "Ingrese el nombre de usuario (mínimo 3 caracteres alfanuméricos): ",
+        3,
+        15,
+        True,
+        True
+    )
+    titulo = pedir_cadena_validada(
+        "Ingrese el título de la película o serie: ",
+        1,
+        100,
+        False,
+        False
+    )
+    texto = pedir_cadena_validada(
+        "Ingrese el contenido de la reseña (mínimo 5 caracteres): ",
+        5,
+        400,
+        False,
+        False
+    )
+    puntuacion = pedir_entero_en_rango(
+        f"Ingrese la puntuación ({PUNTUACION_MIN} a {PUNTUACION_MAX}): ",
+        minimo=PUNTUACION_MIN,
+        maximo=PUNTUACION_MAX
+    )
+    likes = pedir_entero_en_rango(
+        "Ingrese la cantidad inicial de likes (>= 0): ",
+        minimo=0,
+        maximo=1000000
+    )
+
+    # Creación e inserción del nuevo registro
+    nuevo_registro = [nuevo_id, usuario, titulo, texto, puntuacion, likes]
+    matriz.append(nuevo_registro)
+
+    print("\n" + "-" * 54)
+    print(f"¡Registro #{nuevo_id} ingresado con éxito!")
+    print(f"  ID:         {nuevo_id}")
+    print(f"  Usuario:    {usuario}")
+    print(f"  Título:     {titulo}")
+    print(f"  Texto:      \"{texto}\"")
+    print(f"  Puntuación: {puntuacion} / {PUNTUACION_MAX}")
+    print(f"  Likes:      {likes}")
+    print("-" * 54)
+
     print(socio)

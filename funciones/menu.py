@@ -1,4 +1,7 @@
-from .validaciones import pedir_entero
+from .validaciones import pedir_entero,pedir_entero_en_rango
+from .procesamiento import ingresar_registro
+
+
 
 def mostrar_menu():
     print("\n" + "=" * 52)
@@ -19,7 +22,7 @@ def mostrar_menu():
 def ejecutar_opcion(opcion, matriz):
    
     if opcion == 1:
-        print("ingresa_registro(matriz)")
+        ingresar_registro(matriz)
     elif opcion == 2:
         print("agregar")
     elif opcion == 3:
@@ -40,7 +43,7 @@ def iniciar_menu(matriz):
     opcion = -1
     while opcion != 0:
         mostrar_menu()
-        opcion = pedir_entero("Elija una opción: ", 0, 8)
+        opcion = pedir_entero_en_rango("Elija una opción: ", 0, 8)
         try:
             ejecutar_opcion(opcion, matriz)
         finally:
