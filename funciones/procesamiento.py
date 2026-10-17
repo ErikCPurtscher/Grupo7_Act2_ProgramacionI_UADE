@@ -106,3 +106,23 @@ def procesar_palabras(matriz):
 
 
 #Nueva función para el ingreso de registro (opcion 1)
+
+def normalizar_texto(texto, modo="titulo"):
+    
+    if not texto:
+        return ""
+
+    texto_limpio = texto.strip()
+
+    if modo == "titulo":
+        texto_normalizado = texto_limpio.title()
+    elif modo == "minusculas":
+        texto_normalizado = texto_limpio.lower()
+    elif modo == "mayusculas":
+        texto_normalizado = texto_limpio.upper()
+    elif modo == "oracion":
+        texto_normalizado = texto_limpio.capitalize()
+    else:
+        texto_normalizado = texto_limpio
+
+    return texto_normalizado
