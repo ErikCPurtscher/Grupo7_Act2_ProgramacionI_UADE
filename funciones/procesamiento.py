@@ -29,17 +29,13 @@ def alta_registro(registros):
     print()
     codigo_maximo = 0
     for registro in registros:
-        if registro[ID] > codigo_maximo:
-            codigo_maximo = socio[ID]
+        if registro[0] > codigo_maximo:
+            codigo_maximo = socio[0]
     codigo = codigo_maximo + 1
 
     usuario = validar_usuario("Ingrese nombre de usuario: ")
-    nombre_contenido = '''Acá debería ir una función para validar y/o normalizar el nombre del contenido'''
-
-    print("Ingrese el valor de la cuota:", end=" ")
-    valor_cuota = validar_positivo()
-    print()
-
+    titulo_contenido = '''Acá debería ir una función para validar y/o normalizar el nombre del contenido'''
+    puntaje = pedir_entero("Ingrese un puntaje de 0 a 5: ", 0, 5)
     estado = "activo"
 
     socio = [codigo, nombre, nombre_actividad, valor_cuota, estado]
