@@ -1,4 +1,4 @@
-from .validaciones import pedir_entero,pedir_entero_en_rango
+from .validaciones import pedir_entero_positivo,pedir_entero_en_rango
 from .procesamiento import ingresar_registro
 
 
