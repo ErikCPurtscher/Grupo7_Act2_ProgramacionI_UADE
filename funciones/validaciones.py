@@ -1,10 +1,15 @@
-def pedir_entero(mensaje):
-    while True:
-        entrada = input(mensaje).strip()
+
+def pedir_entero_positivo(mensaje):
+    valido = False
+    while not valido:
         try:
-            return int(entrada)
-        except ValueError:
-            print("Error: debe ingresar un número entero.")
+            numero = int(input(mensaje).strip())
+            if numero < 0:
+                raise ValueError("El número no puede ser negativo.")
+            valido = True
+        except ValueError as error:
+            print(f'Error: {error}')
+            print("Debe ingresar un número entero positivo.")
 
 def validar_rango(valor, minimo, maximo):
     if valor < minimo or valor > maximo:
@@ -14,7 +19,7 @@ def validar_rango(valor, minimo, maximo):
 def pedir_entero_en_rango(mensaje, minimo, maximo):
     valido = False
     while not valido:
-        valor = pedir_entero(mensaje)
+        valor = pedir_entero_positivo(mensaje)
         try:
             validar_rango(valor, minimo, maximo)
             valido = True
@@ -23,7 +28,7 @@ def pedir_entero_en_rango(mensaje, minimo, maximo):
     return valor       
 
 def pedir_cadena_validada(mensaje, min_long, max_long, sin_espacios, no_solo_numeros):
-
+                #Buenisima la solución de indicar el tipo de validación con booleanos!
     while True:
         entrada = input(mensaje).strip()
         try:

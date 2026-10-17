@@ -3,12 +3,22 @@ def longitud_texto(texto):
     longitud = len(texto)
     return longitud
 
-def cantidad_palabras(texto):
+def cantidad_palabras(palabras):
     texto_normal = normalizar_texto(texto)
     palabras = separar_palabras(texto_normal)
     cantidad = len(palabras)
     return cantidad
 
-def contar_termino(termino, texto):
-    return texto.lower().count(termino.lower())
+def contar_expreson(expresion, texto):
+    return texto.lower().count(expresion.lower())
 
+def verificar_existencia(expresion, texto):
+    existe_expresion = expresion in texto
+    return existe_expresion
+
+def analizar_contenido(texto):
+    texto_normal = normalizar_texto(texto)
+    palabras = procesar_texto(texto_normal)
+
+    longitud = longitud_texto(texto_normal)
+    

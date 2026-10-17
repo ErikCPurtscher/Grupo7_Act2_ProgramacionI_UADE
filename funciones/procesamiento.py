@@ -1,8 +1,6 @@
 from datos import ID, USUARIO, TITULO, TEXTO, PUNTUACION, LIKES, PUNTUACION_MIN, PUNTUACION_MAX
 from .validaciones import pedir_entero, pedir_cadena_validada,pedir_entero_en_rango
 
-
-
 def buscar_registro(registros, codigo):
     encontrado = False
     pos = 0
@@ -14,8 +12,6 @@ def buscar_registro(registros, codigo):
     if not encontrado:
         pos = -1
     return pos
-
-
 
 def consultar_registro(registros):
     print("CONSULTAR REGISTRO")
@@ -58,7 +54,7 @@ def alta_registro(registros):
 def ingresar_registro(matriz):
 
     print("\n" + "=" * 54)
-    print("            INGRESAR NUEVO REGISTRO DE RESEÑA")
+    print(f"{'INGRESAR NUEVO REGISTRO DE RESEÑA':^54}")
     print("=" * 54)
 
     if len(matriz) > 0:
