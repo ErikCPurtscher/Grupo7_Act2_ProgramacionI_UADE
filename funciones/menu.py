@@ -1,6 +1,8 @@
 from funciones.validaciones import pedir_entero_en_rango
-from .procesamiento import ingresar_registro, procesar_palabras
-
+from datos import TEXTO
+from .procesamiento import ingresar_registro, normalizar_texto, separar_palabras
+from .procesamiento import procesar_palabras, reconstruir_texto
+from .utilidades import consultar_registro
 
 
 def mostrar_menu():
@@ -17,18 +19,30 @@ def mostrar_menu():
     print("8. Manejar errores y permitir recuperacion")
     print("0. Salir")
 
+def opcion_normalizar(matriz):
+    registro = consultar_registro(matriz)
+    if registro is not None:
+        print(f"\nOriginal:    '{registro[TEXTO]}'")
+        print(f"Normalizado: '{normalizar_texto(registro[TEXTO])}'")
 
+def opcion_procesar_palabras(matriz):
+    registro = consultar_registro(matriz)
+    if registro is not None:
+        palabras = separar_palabras(normalizar_texto(registro[TEXTO]))
+        nuevo_texto = reconstruir_texto(procesar_palabras(palabras))
+        print(f"\nOriginal:  '{registro[TEXTO].strip()}'")
+        print(f"Procesado: '{nuevo_texto}'")
 
 def ejecutar_opcion(opcion, matriz):
    
     if opcion == 1:
         ingresar_registro(matriz)
     elif opcion == 2:
-        print("Normalizar_texto(matriz)")
+        opcion_normalizar(matriz)
     elif opcion == 3:
         print("analizar_contenido(matriz)")
     elif opcion == 4:
-        procesar_palabras(matriz)
+        opcion_procesar_palabras(matriz)
     elif opcion == 5:
         print("reemplazar_extraer(matriz)")
     elif opcion == 6:
