@@ -79,6 +79,7 @@ def opcion_codificar(matriz):
         print(f"Decodificado: '{decodificado}'")
 
 def opcion_reporte(matriz):
+    """Pide una reseña y un término, y genera el reporte completo de análisis."""
     pos = consultar_registro(matriz)
     if pos != -1:
         registro = matriz[pos]
