@@ -32,17 +32,14 @@ def buscar_registro(registros, codigo):
 
 
 def consultar_registro(registros):
-    """Pide el ID de una reseña y devuelve el registro, o None si no existe."""
+    """Pide el ID de una reseña y devuelve su posición en la matriz, o -1 si no existe."""
     print("CONSULTAR REGISTRO")
     print()
     codigo = pedir_entero_positivo("Indique el registro a consultar: ")
     pos = buscar_registro(registros, codigo)
-    if pos != -1:
-        registro = registros[pos]
-    else:
+    if pos == -1:
         print("El registro", codigo, "no existe")
-        registro = -1
-    return registro
+    return pos
 
 
 def generar_reporte(matriz, registro, termino, texto):

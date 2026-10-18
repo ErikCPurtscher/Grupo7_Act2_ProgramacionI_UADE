@@ -20,14 +20,16 @@ def mostrar_menu():
     print("0. Salir")
 
 def opcion_normalizar(matriz):
-    registro = consultar_registro(matriz)
-    if registro != -1:
+    pos = consultar_registro(matriz)
+    if pos != -1:
+        registro = matriz[pos]
         print(f"\nOriginal:    '{registro[TEXTO]}'")
         print(f"Normalizado: '{normalizar_texto(registro[TEXTO])}'")
 
 def opcion_analizar(matriz):
-    registro = consultar_registro(matriz)
-    if registro != -1:
+    pos = consultar_registro(matriz)
+    if pos != -1:
+        registro = matriz[pos]
         texto = normalizar_texto(registro[TEXTO])
         termino = pedir_cadena_validada("Carácter o término a buscar: ", 1, 30, False, False)
         longitud, palabras, apariciones, pertenece, vocales = analizar_contenido(texto, termino)
@@ -41,16 +43,18 @@ def opcion_analizar(matriz):
             print(f"'{termino}' NO pertenece al texto.")
 
 def opcion_procesar_palabras(matriz):
-    registro = consultar_registro(matriz)
-    if registro != -1:
+    pos = consultar_registro(matriz)
+    if pos != -1:
+        registro = matriz[pos]
         palabras = separar_palabras(normalizar_texto(registro[TEXTO]))
         nuevo_texto = reconstruir_texto(procesar_palabras(palabras))
         print(f"\nOriginal:  '{registro[TEXTO].strip()}'")
         print(f"Procesado: '{nuevo_texto}'")
 
 def opcion_reemplazar_extraer(matriz):
-    registro = consultar_registro(matriz)
-    if registro != -1:
+    pos = consultar_registro(matriz)
+    if pos != -1:
+        registro = matriz[pos]
         texto = normalizar_texto(registro[TEXTO])
         print(f"\nTexto: '{texto}'")
 
@@ -68,8 +72,9 @@ def opcion_reemplazar_extraer(matriz):
         print(f"Carácter elegido: '{caracter}'")
 
 def opcion_codificar(matriz):
-    registro = consultar_registro(matriz)
-    if registro != -1:
+    pos = consultar_registro(matriz)
+    if pos != -1:
+        registro = matriz[pos]
         texto = normalizar_texto(registro[TEXTO])
         desplazamiento = pedir_entero_en_rango("Desplazamiento (1 a 4): ", 1, 4)
         codificado = codificar_texto(texto, desplazamiento)
@@ -79,8 +84,9 @@ def opcion_codificar(matriz):
         print(f"Decodificado: '{decodificado}'")
 
 def opcion_reporte(matriz):
-    registro = consultar_registro(matriz)
-    if registro != -1:
+    pos = consultar_registro(matriz)
+    if pos != -1:
+        registro = matriz[pos]
         texto = normalizar_texto(registro[TEXTO])
         termino = pedir_cadena_validada("Carácter o término a buscar: ", 1, 30, False, False)
         generar_reporte(matriz, registro, termino, texto)

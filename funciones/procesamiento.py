@@ -74,7 +74,7 @@ def normalizar_texto(texto):
                 palabra = palabra.capitalize()
         resultado.append(palabra)
         ultimo = palabra[-1]
-        inicio_oracion = ultimo == "." or ultimo == "!" or ultimo == "?"
+        inicio_oracion = ultimo == "." or ultimo == "!" or ultimo == "?" or ultimo == ":"
     return " ".join(resultado)
 
 
