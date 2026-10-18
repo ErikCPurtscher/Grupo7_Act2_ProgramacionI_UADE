@@ -44,7 +44,6 @@ def consultar_registro(registros):
         registro = -1
     return registro
 
-  ##Erik - Cambié consultar_registro para que quede un solo return al final que es algo que recomienda el profe
 
 def generar_reporte(matriz, registro, termino, texto):
     """Muestra los datos de una reseña junto con los resultados de su análisis,
