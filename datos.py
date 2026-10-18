@@ -7,7 +7,10 @@ TITULO = 2
 PUNTUACION = 3
 LIKES = 4
 TEXTO = 5
- 
+
+# Rango de puntuaciones de las reseñas 
+PUNTUACION_MIN = 0
+PUNTUACION_MAX = 5
 
 resenias = [
     [1, "cinefilo92", "El Padrino", 5, 342, "Una obra maestra del cine. La actuación de Marlon Brando es inolvidable y la música acompaña cada escena."],
