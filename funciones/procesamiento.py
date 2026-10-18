@@ -31,8 +31,8 @@ def ingresar_registro(matriz):
     )
     puntuacion = pedir_entero_en_rango(
         f"Ingrese la puntuación ({PUNTUACION_MIN} a {PUNTUACION_MAX}): ",
-        minimo = PUNTUACION_MIN,
-        maximo = PUNTUACION_MAX
+        PUNTUACION_MIN,
+        PUNTUACION_MAX
     )
     likes = pedir_entero_positivo(
         "Ingrese la cantidad inicial de likes: ",
@@ -62,7 +62,7 @@ def ingresar_registro(matriz):
 
 def normalizar_texto(texto):
     """Devuelve el texto sin espacios sobrantes, en minúsculas y con la primera
-    letra de cada oración en mayúscula (después de punto, ! o ?)."""
+    letra de cada oración en mayúscula (después de punto, dos puntos, ! o ?)."""
     palabras = texto.strip().lower().split()
     resultado = []
     inicio_oracion = True
