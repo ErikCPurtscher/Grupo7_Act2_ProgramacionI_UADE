@@ -51,9 +51,8 @@ def generar_reporte(matriz, registro, termino, texto):
     con formato alineado y números con decimales fijos.
     'texto' es el contenido ya normalizado que se analizó."""
     longitud, palabras, apariciones, pertenece, vocales = analizar_contenido(texto, termino)
-    prom_puntuacion, cantidad = promedio_puntuacion_usuario(matriz, registro[USUARIO])
-    prom_likes = promedio_likes_usuario(matriz, registro[USUARIO])
-    likes = prom_likes[ID]
+    prom_puntuacion, cant_resenias = promedio_puntuacion_usuario(matriz, registro[USUARIO])
+    prom_likes, cant_likes = promedio_likes_usuario(matriz, registro[USUARIO])
     porc_vocales = calcular_porcentaje(vocales, longitud)
     porc_termino = calcular_porcentaje(apariciones * len(termino), longitud)
     if pertenece:
@@ -78,7 +77,8 @@ def generar_reporte(matriz, registro, termino, texto):
     print(f"{'Aparece en la reseña:':<26}{respuesta}")
     print(f"{'Apariciones:':<26}{apariciones} ({porc_termino:.1f}% del texto)")
     print("-" * 54)
-    print(f"{'Reseñas del usuario:':<26}{cantidad}")
+    print(f"{'Reseñas del usuario:':<26}{cant_resenias}")
     print(f"{'Puntuación promedio:':<26}{prom_puntuacion:.2f} / {PUNTUACION_MAX}")
-    print(f"{'Likes promedio:':<26}{likes:.1f}")
+    print(f"{'Likes totales:':<26}{cant_likes:.1f}")
+    print(f"{'Likes promedio:':<26}{prom_likes:.1f}")
     print("=" * 54)
