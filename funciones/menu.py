@@ -1,7 +1,8 @@
-from funciones.validaciones import pedir_entero_en_rango
+from funciones.validaciones import pedir_entero_en_rango, pedir_cadena_validada
 from datos import TEXTO
 from .procesamiento import ingresar_registro, normalizar_texto, separar_palabras
 from .procesamiento import procesar_palabras, reconstruir_texto
+from .analisis import analizar_contenido
 from .utilidades import consultar_registro
 
 
@@ -25,6 +26,21 @@ def opcion_normalizar(matriz):
         print(f"\nOriginal:    '{registro[TEXTO]}'")
         print(f"Normalizado: '{normalizar_texto(registro[TEXTO])}'")
 
+def opcion_analizar(matriz):
+    registro = consultar_registro(matriz)
+    if registro is not None:
+        texto = normalizar_texto(registro[TEXTO])
+        termino = pedir_cadena_validada("Carácter o término a buscar: ", 1, 30, False, False)
+        longitud, palabras, apariciones, pertenece, vocales = analizar_contenido(texto, termino)
+        print(f"\nLongitud del texto:   {longitud} caracteres")
+        print(f"Cantidad de palabras: {palabras}")
+        print(f"Vocales:              {vocales}")
+        print(f"Apariciones de '{termino}': {apariciones}")
+        if pertenece:
+            print(f"'{termino}' pertenece al texto.")
+        else:
+            print(f"'{termino}' NO pertenece al texto.")
+
 def opcion_procesar_palabras(matriz):
     registro = consultar_registro(matriz)
     if registro is not None:
@@ -40,7 +56,7 @@ def ejecutar_opcion(opcion, matriz):
     elif opcion == 2:
         opcion_normalizar(matriz)
     elif opcion == 3:
-        print("analizar_contenido(matriz)")
+        opcion_analizar(matriz)
     elif opcion == 4:
         opcion_procesar_palabras(matriz)
     elif opcion == 5:
