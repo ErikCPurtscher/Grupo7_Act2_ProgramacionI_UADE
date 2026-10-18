@@ -31,23 +31,23 @@ def ingresar_registro(matriz):
         False,
         False
     )
-    texto = pedir_cadena_validada(
-        "Ingrese el contenido de la reseña (mínimo 5 caracteres): ",
-        5,
-        400,
-        False,
-        False
-    )
     puntuacion = pedir_entero_en_rango(
         f"Ingrese la puntuación ({PUNTUACION_MIN} a {PUNTUACION_MAX}): ",
-        minimo=PUNTUACION_MIN,
-        maximo=PUNTUACION_MAX
+        minimo = PUNTUACION_MIN,
+        maximo = PUNTUACION_MAX
     )
     likes = pedir_entero_en_rango(
         "Ingrese la cantidad inicial de likes (>= 0): ",
         minimo=0,
         maximo=1000000
     )
+    texto = pedir_cadena_validada(
+            "Ingrese el contenido de la reseña (mínimo 5 caracteres): ",
+            5,
+            400,
+            False,
+            False
+        )
 
     # Creación e inserción del nuevo registro
     nuevo_registro = [nuevo_id, usuario, titulo, puntuacion, likes, texto]
