@@ -18,16 +18,16 @@ def ingresar_registro(matriz):
     print(f"ID asignado al nuevo registro: {nuevo_id}\n")
 
     usuario = pedir_cadena_validada(
-        "Ingrese el nombre de usuario (mínimo 3 caracteres alfanuméricos): ",
+        "Ingrese el nombre de usuario (3 a 12 caracteres alfanuméricos): ",
         3,
-        15,
+        12,
         True,
         True
     )
     titulo = pedir_cadena_validada(
         "Ingrese el título de la película o serie: ",
         1,
-        100,
+        30,
         False,
         False
     )
