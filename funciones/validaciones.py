@@ -48,3 +48,20 @@ def pedir_cadena_validada(mensaje, min_long, max_long, sin_espacios, no_solo_num
             print(f"Error de validación: {error}")
         else:
             return entrada
+
+def pedir_caracter_en_posicion(texto):
+    """Pide una posición (positiva o negativa) y devuelve el carácter del texto
+    en ella. Distingue un valor no numérico (ValueError) de una posición fuera
+    del texto (IndexError) y reintenta hasta que el ingreso sea válido."""
+    recuperado = False
+    while not recuperado:
+        try:
+            posicion = int(input(f"Posición del carácter (0 a {len(texto) - 1}, o negativa): ").strip())
+            caracter = texto[posicion]
+        except ValueError:
+            print("Error: la posición debe ser un número entero.")
+        except IndexError as error:
+            print(f"Error: la posición está fuera del texto ({error}).")
+        else:
+            recuperado = True
+    return caracter

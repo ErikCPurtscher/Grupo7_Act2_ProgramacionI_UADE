@@ -133,3 +133,16 @@ def reconstruir_texto(palabras):
     """Une una lista de palabras en una sola cadena separada por espacios."""
     return " ".join(palabras)
 
+def reemplazar_texto(texto, buscado, nuevo):
+    """Reemplaza todas las apariciones de 'buscado' por 'nuevo'
+    (distingue mayúsculas de minúsculas)."""
+    return texto.replace(buscado, nuevo)
+
+
+def extraer_fragmentos(texto, cantidad):
+    """Devuelve los primeros y los últimos 'cantidad' caracteres del texto
+    y el texto completo invertido (slicing con índice negativo y con paso)."""
+    inicio = texto[:cantidad]
+    final = texto[-cantidad:]
+    invertido = texto[::-1]
+    return inicio, final, invertido

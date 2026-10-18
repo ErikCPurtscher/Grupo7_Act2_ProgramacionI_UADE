@@ -1,7 +1,8 @@
-from funciones.validaciones import pedir_entero_en_rango, pedir_cadena_validada
+from .validaciones import pedir_entero_en_rango, pedir_cadena_validada, pedir_caracter_en_posicion
 from datos import TEXTO
 from .procesamiento import ingresar_registro, normalizar_texto, separar_palabras
 from .procesamiento import procesar_palabras, reconstruir_texto
+from .procesamiento import reemplazar_texto, extraer_fragmentos
 from .analisis import analizar_contenido
 from .utilidades import consultar_registro
 
@@ -49,6 +50,25 @@ def opcion_procesar_palabras(matriz):
         print(f"\nOriginal:  '{registro[TEXTO].strip()}'")
         print(f"Procesado: '{nuevo_texto}'")
 
+def opcion_reemplazar_extraer(matriz):
+    registro = consultar_registro(matriz)
+    if registro is not None:
+        texto = normalizar_texto(registro[TEXTO])
+        print(f"\nTexto: '{texto}'")
+
+        buscado = pedir_cadena_validada("Texto a reemplazar: ", 1, 30, False, False)
+        nuevo = pedir_cadena_validada("Reemplazar por: ", 1, 30, False, False)
+        print(f"Resultado: '{reemplazar_texto(texto, buscado, nuevo)}'")
+
+        cantidad = pedir_entero_en_rango("\nCantidad de caracteres a extraer: ", 1, len(texto))
+        inicio, final, invertido = extraer_fragmentos(texto, cantidad)
+        print(f"Primeros {cantidad}: '{inicio}'")
+        print(f"Últimos {cantidad}:  '{final}'")
+        print(f"Invertido:  '{invertido}'")
+
+        caracter = pedir_caracter_en_posicion(texto)
+        print(f"Carácter elegido: '{caracter}'")
+
 def ejecutar_opcion(opcion, matriz):
    
     if opcion == 1:
@@ -60,7 +80,7 @@ def ejecutar_opcion(opcion, matriz):
     elif opcion == 4:
         opcion_procesar_palabras(matriz)
     elif opcion == 5:
-        print("reemplazar_extraer(matriz)")
+        opcion_reemplazar_extraer(matriz)
     elif opcion == 6:
         print("transformar(matriz)")
     elif opcion == 7:
