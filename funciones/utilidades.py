@@ -1,7 +1,8 @@
 from datos import ID, USUARIO, TITULO, PUNTUACION, LIKES, TEXTO, PUNTUACION_MAX
 from .analisis import analizar_contenido, calcular_porcentaje
 from .analisis import promedio_puntuacion_usuario, promedio_likes_usuario
-from .validaciones import pedir_entero_positivo 
+from .validaciones import pedir_entero_positivo
+from .procesamiento import normalizar_texto
 
 
 def mostrar_registros(registros):
@@ -9,20 +10,20 @@ def mostrar_registros(registros):
     print(f"{'Id':^8}{'Usuario':^15}{'Título':^30}{'Puntuación':^12}{'Likes':^7}{'Texto'}")
     print("-" * 350)
     for registro in registros:
-        codigo = registro[0]
-        usuario = registro[1]
-        titulo = registro[2]
-        puntaje = '*' * registro[3]
-        likes = registro[4]
-        texto = registro[5]
-        print(f"{codigo:^8}{usuario:^15}{titulo:^30}{puntaje:^12}{likes:^7}{texto}")
+        codigo = registro[ID]
+        usuario = registro[USUARIO]
+        titulo = registro[TITULO]
+        puntaje = '*' * registro[PUNTUACION]
+        likes = registro[LIKES]
+        texto = normalizar_texto(registro[TEXTO])
+        print(f"{codigo:<8}{usuario:<15}{titulo:<30}{puntaje:<12}{likes:<7}{texto}")
 
 def buscar_registro(registros, codigo):
     """Devuelve la posición del registro con ese ID, o -1 si no existe."""
     encontrado = False
     pos = 0
     while pos < len(registros) and not encontrado:
-        if registros[pos][0] == codigo:
+        if registros[pos][ID] == codigo:
             encontrado = True
         else:
             pos += 1
@@ -38,10 +39,13 @@ def consultar_registro(registros):
     codigo = pedir_entero_positivo("Indique el registro a consultar: ")
     pos = buscar_registro(registros, codigo)
     if pos != -1:
-        return registros[pos]
+        registro = registros[pos]
     else:
         print("El registro", codigo, "no existe")
-        return None  
+        registro = None
+    return registro
+
+  ##Erik - Cambié consultar_registro para que quede un solo return al final que es algo que recomienda el profe
 
 def generar_reporte(matriz, registro, termino, texto):
     """Muestra los datos de una reseña junto con los resultados de su análisis,
