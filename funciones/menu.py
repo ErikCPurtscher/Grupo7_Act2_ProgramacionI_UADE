@@ -18,7 +18,7 @@ def mostrar_menu():
     print("5. Reemplazar y extraer información")
     print("6. Transformacion mediante codigos de caracteres")
     print("7. Generar reporte de análisis")
-    print("8. Manejar errores y permitir recuperacion")
+    print("8. Ver todas las reseñas")
     print("0. Salir")
 
 def opcion_normalizar(matriz):
