@@ -1,8 +1,7 @@
 from datos import ID, USUARIO, TITULO, PUNTUACION, LIKES, TEXTO, PUNTUACION_MAX
-from .analisis import analizar_contenido, calcular_porcentaje
-from .analisis import promedio_puntuacion_usuario, promedio_likes_usuario
-from .validaciones import pedir_entero_positivo
-from .procesamiento import normalizar_texto
+from funciones.analisis import analizar_contenido, calcular_porcentaje, promedio_puntuacion_usuario, promedio_likes_usuario
+from funciones.validaciones import pedir_entero_positivo
+from funciones.procesamiento import normalizar_texto
 
 
 def mostrar_registros(registros):

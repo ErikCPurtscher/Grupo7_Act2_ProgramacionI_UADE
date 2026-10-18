@@ -1,10 +1,8 @@
-from .validaciones import pedir_entero_en_rango, pedir_cadena_validada, pedir_caracter_en_posicion
+from funciones.validaciones import pedir_entero_en_rango, pedir_cadena_validada, pedir_caracter_en_posicion
 from datos import TEXTO
-from .procesamiento import ingresar_registro, normalizar_texto, separar_palabras
-from .procesamiento import procesar_palabras, reconstruir_texto
-from .procesamiento import reemplazar_texto, extraer_fragmentos, codificar_texto
-from .analisis import analizar_contenido
-from .utilidades import consultar_registro, generar_reporte, mostrar_registros
+from funciones.procesamiento import ingresar_registro, normalizar_texto, separar_palabras, procesar_palabras, reconstruir_texto, reemplazar_texto, extraer_fragmentos, codificar_texto
+from funciones.analisis import analizar_contenido
+from funciones.utilidades import consultar_registro, generar_reporte, mostrar_registros
 
 
 def mostrar_menu():

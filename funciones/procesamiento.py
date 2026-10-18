@@ -1,5 +1,5 @@
 from datos import ID, USUARIO, TITULO, TEXTO, PUNTUACION, LIKES, PUNTUACION_MIN, PUNTUACION_MAX
-from .validaciones import pedir_cadena_validada,pedir_entero_en_rango, pedir_entero_positivo
+from funciones.validaciones import pedir_cadena_validada,pedir_entero_en_rango, pedir_entero_positivo
 
 def ingresar_registro(matriz):
     """Pide los datos de una reseña, los valida y la agrega a la matriz con un nuevo ID."""
