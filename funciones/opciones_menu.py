@@ -6,6 +6,7 @@ from funciones.utilidades import consultar_registro, generar_reporte
 
 
 def opcion_normalizar(matriz):
+    """Pide una reseña y muestra su texto original junto a su versión normalizada."""
     pos = consultar_registro(matriz)
     if pos != -1:
         registro = matriz[pos]
@@ -13,6 +14,8 @@ def opcion_normalizar(matriz):
         print(f"Normalizado: '{normalizar_texto(registro[TEXTO])}'")
 
 def opcion_analizar(matriz):
+    """Pide una reseña y un término, y muestra longitud, cantidad de palabras,
+    vocales, apariciones y pertenencia del término en el texto."""
     pos = consultar_registro(matriz)
     if pos != -1:
         registro = matriz[pos]
@@ -29,6 +32,8 @@ def opcion_analizar(matriz):
             print(f"'{termino}' NO pertenece al texto.")
 
 def opcion_procesar_palabras(matriz):
+    """Pide una reseña, separa su texto en palabras, expande abreviaturas,
+    censura spoilers y muestra el texto reconstruido."""
     pos = consultar_registro(matriz)
     if pos != -1:
         registro = matriz[pos]
@@ -38,6 +43,8 @@ def opcion_procesar_palabras(matriz):
         print(f"Procesado: '{nuevo_texto}'")
 
 def opcion_reemplazar_extraer(matriz):
+    """Pide una reseña y permite reemplazar un fragmento del texto, extraer
+    sus primeros y últimos caracteres, invertirlo y obtener un carácter por posición."""
     pos = consultar_registro(matriz)
     if pos != -1:
         registro = matriz[pos]
@@ -58,6 +65,8 @@ def opcion_reemplazar_extraer(matriz):
         print(f"Carácter elegido: '{caracter}'")
 
 def opcion_codificar(matriz):
+    """Pide una reseña y un desplazamiento, y muestra el texto codificado
+    con ord()/chr() y su decodificación."""
     pos = consultar_registro(matriz)
     if pos != -1:
         registro = matriz[pos]

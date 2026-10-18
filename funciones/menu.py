@@ -5,6 +5,7 @@ from funciones.opciones_menu import opcion_analizar, opcion_codificar, opcion_no
 
 
 def mostrar_menu():
+    """Muestra en pantalla las opciones disponibles del sistema."""
     print("\n" + "=" * 52)
     print("   SISTEMA DE ANÁLISIS DE RESEÑAS")
     print("=" * 52)
@@ -19,6 +20,7 @@ def mostrar_menu():
     print("0. Salir")
 
 def ejecutar_opcion(opcion, matriz):
+    """Ejecuta la funcionalidad correspondiente a la opción elegida por el usuario."""
     if opcion == 1:
         ingresar_registro(matriz)
     elif opcion == 2:
@@ -38,6 +40,8 @@ def ejecutar_opcion(opcion, matriz):
  
  
 def iniciar_menu(matriz):
+    """Muestra el menú en bucle, valida la opción ingresada y la ejecuta
+    hasta que el usuario elija 0 (Salir)."""
     opcion = -1
     while opcion != 0:
         mostrar_menu()
