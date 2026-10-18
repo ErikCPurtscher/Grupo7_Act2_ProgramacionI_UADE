@@ -3,52 +3,21 @@ from funciones.validaciones import pedir_cadena_validada,pedir_entero_en_rango, 
 
 def ingresar_registro(matriz):
     """Pide los datos de una reseña, los valida y la agrega a la matriz con un nuevo ID."""
-
     print("\n" + "=" * 54)
     print(f"{'INGRESAR NUEVO REGISTRO DE RESEÑA':^54}")
     print("=" * 54)
-
     if len(matriz) > 0:
         nuevo_id = matriz[-1][ID] + 1
     else:
         nuevo_id = 1
-
     print(f"ID asignado al nuevo registro: {nuevo_id}\n")
-
-    usuario = pedir_cadena_validada(
-        "Ingrese el nombre de usuario (3 a 12 caracteres alfanuméricos): ",
-        3,
-        12,
-        True,
-        True
-    )
-    titulo = pedir_cadena_validada(
-        "Ingrese el título de la película o serie: ",
-        1,
-        30,
-        False,
-        False
-    )
-    puntuacion = pedir_entero_en_rango(
-        f"Ingrese la puntuación ({PUNTUACION_MIN} a {PUNTUACION_MAX}): ",
-        PUNTUACION_MIN,
-        PUNTUACION_MAX
-    )
-    likes = pedir_entero_positivo(
-        "Ingrese la cantidad inicial de likes: ",
-    )
-    texto = pedir_cadena_validada(
-            "Ingrese el contenido de la reseña (mínimo 5 caracteres): ",
-            5,
-            400,
-            False,
-            False
-        )
-
-    # Creación e inserción del nuevo registro
+    usuario = pedir_cadena_validada("Ingrese el nombre de usuario (3 a 12 caracteres alfanuméricos): ", 3, 12, True, True)
+    titulo = pedir_cadena_validada("Ingrese el título de la película o serie: ", 1, 30, False, False)
+    puntuacion = pedir_entero_en_rango(f"Ingrese la puntuación ({PUNTUACION_MIN} a {PUNTUACION_MAX}): ", PUNTUACION_MIN, PUNTUACION_MAX)
+    likes = pedir_entero_positivo("Ingrese la cantidad inicial de likes: ")
+    texto = pedir_cadena_validada("Ingrese el contenido de la reseña (mínimo 5 caracteres): ", 5, 400, False, False)
     nuevo_registro = [nuevo_id, usuario, titulo, puntuacion, likes, texto]
     matriz.append(nuevo_registro)
-
     print("\n" + "-" * 54)
     print(f"¡Registro #{nuevo_id} ingresado con éxito!")
     print(f"  ID:         {nuevo_id}")
