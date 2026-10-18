@@ -2,9 +2,9 @@ from .validaciones import pedir_entero_en_rango, pedir_cadena_validada, pedir_ca
 from datos import TEXTO
 from .procesamiento import ingresar_registro, normalizar_texto, separar_palabras
 from .procesamiento import procesar_palabras, reconstruir_texto
-from .procesamiento import reemplazar_texto, extraer_fragmentos
+from .procesamiento import reemplazar_texto, extraer_fragmentos, codificar_texto
 from .analisis import analizar_contenido
-from .utilidades import consultar_registro
+from .utilidades import consultar_registro, generar_reporte, mostrar_registros
 
 
 def mostrar_menu():
@@ -69,6 +69,24 @@ def opcion_reemplazar_extraer(matriz):
         caracter = pedir_caracter_en_posicion(texto)
         print(f"Carácter elegido: '{caracter}'")
 
+def opcion_codificar(matriz):
+    registro = consultar_registro(matriz)
+    if registro is not None:
+        texto = normalizar_texto(registro[TEXTO])
+        desplazamiento = pedir_entero_en_rango("Desplazamiento (1 a 4): ", 1, 4)
+        codificado = codificar_texto(texto, desplazamiento)
+        decodificado = codificar_texto(codificado, -desplazamiento)
+        print(f"\nOriginal:     '{texto}'")
+        print(f"Codificado:   '{codificado}'")
+        print(f"Decodificado: '{decodificado}'")
+
+def opcion_reporte(matriz):
+    registro = consultar_registro(matriz)
+    if registro is not None:
+        texto = normalizar_texto(registro[TEXTO])
+        termino = pedir_cadena_validada("Carácter o término a buscar: ", 1, 30, False, False)
+        generar_reporte(matriz, registro, termino, texto)
+
 def ejecutar_opcion(opcion, matriz):
    
     if opcion == 1:
@@ -82,11 +100,11 @@ def ejecutar_opcion(opcion, matriz):
     elif opcion == 5:
         opcion_reemplazar_extraer(matriz)
     elif opcion == 6:
-        print("transformar(matriz)")
+        opcion_codificar(matriz)
     elif opcion == 7:
-        print("")
+        opcion_reporte(matriz)
     elif opcion == 8:
-        print("permitir_recuperar(matriz)")
+        mostrar_registros(matriz)
  
  
 def iniciar_menu(matriz):

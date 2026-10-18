@@ -1,5 +1,6 @@
 
 def pedir_entero_positivo(mensaje):
+    """Pide un entero mayor o igual a 0 y lo devuelve. Reintenta ante texto o negativos."""
     valido = False
     while not valido:
         try:
@@ -14,11 +15,13 @@ def pedir_entero_positivo(mensaje):
             return numero
 
 def validar_rango(valor, minimo, maximo):
+    """Lanza ValueError si el valor está fuera del rango [minimo, maximo]."""
     if valor < minimo or valor > maximo:
         raise ValueError(f"El valor debe estar entre {minimo} y {maximo}.")         
 
 
 def pedir_entero_en_rango(mensaje, minimo, maximo):
+    """Pide un entero y lo devuelve solo si está entre minimo y maximo; si no, reintenta."""
     valido = False
     while not valido:
         valor = pedir_entero_positivo(mensaje)
@@ -30,7 +33,7 @@ def pedir_entero_en_rango(mensaje, minimo, maximo):
     return valor       
 
 def pedir_cadena_validada(mensaje, min_long, max_long, sin_espacios, no_solo_numeros):
-                #Buenisima la solución de indicar el tipo de validación con booleanos!
+    """Pide un texto y valida vacío, longitud y caracteres. Reintenta hasta que sea válido."""
     while True:
         entrada = input(mensaje).strip()
         try:

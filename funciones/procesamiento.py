@@ -1,10 +1,8 @@
 from datos import ID, USUARIO, TITULO, TEXTO, PUNTUACION, LIKES, PUNTUACION_MIN, PUNTUACION_MAX
 from .validaciones import pedir_cadena_validada,pedir_entero_en_rango, pedir_entero_positivo
-from .utilidades import consultar_registro
-
-
 
 def ingresar_registro(matriz):
+    """Pide los datos de una reseña, los valida y la agrega a la matriz con un nuevo ID."""
 
     print("\n" + "=" * 54)
     print(f"{'INGRESAR NUEVO REGISTRO DE RESEÑA':^54}")
@@ -62,40 +60,6 @@ def ingresar_registro(matriz):
     print("-" * 54)
 
 
-
-# def procesar_palabras(matriz):
-#     registro = consultar_registro(matriz)
-    
-#     oraciones = registro[TEXTO]
-#     palabras = oraciones.split(". ")
-#     texto = ". ".join([oracion.strip().capitalize() for oracion in palabras])
-
-#     print("texto Original:", oraciones)
-#     print("Texto limpio:", texto)
-#     return texto
-
-#Nueva función para el ingreso de registro (opcion 1)
-
-# def normalizar_texto(texto, modo="titulo"):
-    
-#     if not texto:
-#         return ""
-
-#     texto_limpio = texto.strip()
-
-#     if modo == "titulo":
-#         texto_normalizado = texto_limpio.title()
-#     elif modo == "minusculas":
-#         texto_normalizado = texto_limpio.lower()
-#     elif modo == "mayusculas":
-#         texto_normalizado = texto_limpio.upper()
-#     elif modo == "oracion":
-#         texto_normalizado = texto_limpio.capitalize()
-#     else:
-#         texto_normalizado = texto_limpio
-
-#     return texto_normalizado
-
 def normalizar_texto(texto):
     """Devuelve el texto sin espacios sobrantes (extremos y repetidos),
     en minúsculas y con la primera letra en mayúscula."""
@@ -146,3 +110,11 @@ def extraer_fragmentos(texto, cantidad):
     final = texto[-cantidad:]
     invertido = texto[::-1]
     return inicio, final, invertido
+
+def codificar_texto(texto, desplazamiento):
+    """Desplaza el código de cada carácter con ord() y chr().
+    Para decodificar se usa el mismo desplazamiento con signo negativo."""
+    resultado = ""
+    for caracter in texto:
+        resultado += chr(ord(caracter) + desplazamiento)
+    return resultado
