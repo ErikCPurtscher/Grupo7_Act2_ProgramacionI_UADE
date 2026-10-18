@@ -1,4 +1,4 @@
-from datos import TITULO, PUNTUACION
+from datos import TITULO, PUNTUACION, USUARIO, LIKES
 
 
 def longitud_texto(texto):
@@ -62,6 +62,38 @@ def promedio_puntuacion_titulo(matriz, titulo):
     for registro in matriz:
         if registro[TITULO] == titulo:
             suma += registro[PUNTUACION]
+            cantidad += 1
+    try:
+        promedio = suma / cantidad
+    except ZeroDivisionError:
+        promedio = 0
+    return promedio, cantidad
+
+
+def promedio_puntuacion_usuario(matriz, usuario):
+    """Devuelve el promedio de puntuación y la cantidad de reseñas de un usuario
+    (promedio 0 si el usuario no tiene reseñas)."""
+    suma = 0
+    cantidad = 0
+    for registro in matriz:
+        if registro[USUARIO] == usuario:
+            suma += registro[PUNTUACION]
+            cantidad += 1
+    try:
+        promedio = suma / cantidad
+    except ZeroDivisionError:
+        promedio = 0
+    return promedio, cantidad
+
+
+def promedio_likes_usuario(matriz, usuario):
+    """Devuelve el promedio de likes y la cantidad de reseñas de un usuario
+    (promedio 0 si el usuario no tiene reseñas)."""
+    suma = 0
+    cantidad = 0
+    for registro in matriz:
+        if registro[USUARIO] == usuario:
+            suma += registro[LIKES]
             cantidad += 1
     try:
         promedio = suma / cantidad
