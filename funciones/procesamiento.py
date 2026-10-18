@@ -1,5 +1,5 @@
 from datos import ID, USUARIO, TITULO, TEXTO, PUNTUACION, LIKES, PUNTUACION_MIN, PUNTUACION_MAX
-from .validaciones import pedir_cadena_validada,pedir_entero_en_rango
+from .validaciones import pedir_cadena_validada,pedir_entero_en_rango, pedir_entero_positivo
 from .utilidades import consultar_registro
 
 
@@ -36,10 +36,8 @@ def ingresar_registro(matriz):
         minimo = PUNTUACION_MIN,
         maximo = PUNTUACION_MAX
     )
-    likes = pedir_entero_en_rango(
-        "Ingrese la cantidad inicial de likes (>= 0): ",
-        minimo=0,
-        maximo=1000000
+    likes = pedir_entero_positivo(
+        "Ingrese la cantidad inicial de likes: ",
     )
     texto = pedir_cadena_validada(
             "Ingrese el contenido de la reseña (mínimo 5 caracteres): ",
