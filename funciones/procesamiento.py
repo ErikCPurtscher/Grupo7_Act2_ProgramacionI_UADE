@@ -30,9 +30,9 @@ def ingresar_registro(matriz):
         False
     )
     puntuacion = pedir_entero_en_rango(
-        f"Ingrese la puntuación ({PUNTUACION_MIN} a {PUNTUACION_MAX}): ",
-        minimo = PUNTUACION_MIN,
-        maximo = PUNTUACION_MAX
+        f"Ingrese la puntuación (0 a 5): ",
+        0,
+        5
     )
     likes = pedir_entero_positivo(
         "Ingrese la cantidad inicial de likes: ",

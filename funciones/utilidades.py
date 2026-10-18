@@ -42,7 +42,7 @@ def consultar_registro(registros):
         registro = registros[pos]
     else:
         print("El registro", codigo, "no existe")
-        registro = None
+        registro = -1
     return registro
 
   ##Erik - Cambié consultar_registro para que quede un solo return al final que es algo que recomienda el profe
@@ -53,7 +53,8 @@ def generar_reporte(matriz, registro, termino, texto):
     'texto' es el contenido ya normalizado que se analizó."""
     longitud, palabras, apariciones, pertenece, vocales = analizar_contenido(texto, termino)
     prom_puntuacion, cantidad = promedio_puntuacion_usuario(matriz, registro[USUARIO])
-    prom_likes = promedio_likes_usuario(matriz, registro[USUARIO])[0]
+    prom_likes = promedio_likes_usuario(matriz, registro[USUARIO])
+    likes = prom_likes[ID]
     porc_vocales = calcular_porcentaje(vocales, longitud)
     porc_termino = calcular_porcentaje(apariciones * len(termino), longitud)
     if pertenece:
@@ -80,5 +81,5 @@ def generar_reporte(matriz, registro, termino, texto):
     print("-" * 54)
     print(f"{'Reseñas del usuario:':<26}{cantidad}")
     print(f"{'Puntuación promedio:':<26}{prom_puntuacion:.2f} / {PUNTUACION_MAX}")
-    print(f"{'Likes promedio:':<26}{prom_likes:.1f}")
+    print(f"{'Likes promedio:':<26}{likes:.1f}")
     print("=" * 54)

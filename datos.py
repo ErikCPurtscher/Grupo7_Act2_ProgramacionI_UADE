@@ -8,58 +8,7 @@ PUNTUACION = 3
 LIKES = 4
 TEXTO = 5
  
-# Rango válido de puntuación (entera, estilo estrellas)
-PUNTUACION_MIN = 0
-PUNTUACION_MAX = 5
- 
-# ---------------------------------------------------------------------------
-# CASOS DE PRUEBA INCLUIDOS EN LOS DATOS (referencia por ID de reseña)
-# ---------------------------------------------------------------------------
-# Normalización:
-#   - Espacios sobrantes en los extremos: 2, 7, 9, 16, 17, 20, 22, 25, 29,
-#     32, 37, 45, 47, 50
-#   - Espacios dobles o triples entre palabras: 7, 30
-#     (split() sin argumentos vs. split(" ") dan resultados distintos)
-#   - Texto completo en mayúsculas: 3, 29
-#   - Mayúsculas mezcladas dentro del texto: 16, 37, 40, 47
-#   - Texto que empieza en minúscula: 7, 9, 12, 20, 25, 27, 30, 37, 42, 47, 50
-#   - Nombres propios en minúscula: 9 (michael scott), 12 (francia),
-#     20 (batman, superman), 42 (abba)
-#
-# Procesamiento de palabras y replace():
-#   - Abreviatura "q": 7, 12, 30, 47, 50
-#   - Abreviatura "xq": 20
-#   - Errores de ortografía:
-#       b/v  -> 7 (debuelva), 17 (bi, beria), 32 (Bestuario), 47 (BEAN), 50 (bi)
-#       h    -> 12 y 40 (ay), 32 (ermoso)
-#       c/s  -> 25 (demaciado), 50 (esplica)
-#       otros-> 17 (trajica), 25 (aver)
-#   - Tildes faltantes: 12, 17, 25, 37, 40, 42
-#   - Palabra "spoiler" (para censurar): 5, 13, 23, 33, 43
-#     (el 5 la tiene dos veces: "Spoiler" y "spoiler" -> sensible a mayúsculas)
-#   - Signos repetidos: 12 y 37 (...), 17 (!!!), 42 (!!)
-#
-# Análisis (count / in):
-#   - Palabras repetidas: 7 (muy, larga), 10 (oscura), 17 (diez, veces),
-#     22 (pegadiza), 27 (mala x3), 37 (llore x3), 40 (autos, espacio)
-#   - Textos más largos (útiles para slicing con paso o negativo): 1, 4, 5, 25
-#   - Números dentro del texto: 7 (2 horas), 26 (2000)
-#
-# Transformación con ord() / chr():
-#   - Vocales con tilde y ñ: muchos registros (ej. 37 "pañuelos")
-#   - Signos de apertura ¿ ¡: 15, 36
-#
-# Estadísticas y reporte:
-#   - 10 usuarios con 5 reseñas cada uno (ranking y promedios por usuario)
-#   - Títulos repetidos: Cats (7, 50), Breaking Bad (3, 49),
-#     Relatos salvajes (6, 48)
-#   - Reseñas con 0 likes: 22, 39, 50
-#   - Reseñas con puntuación 0: 27, 50
-#   - Títulos con números o signos: 2, 4, 28, 40
-#   - Usuario con mayúsculas: GuilleCine (8, 18, 28, 38, 48)
-# ---------------------------------------------------------------------------
- 
-# Matriz de reseñas: [id, usuario, titulo, puntuacion, likes, texto]
+
 resenias = [
     [1, "cinefilo92", "El Padrino", 5, 342, "Una obra maestra del cine. La actuación de Marlon Brando es inolvidable y la música acompaña cada escena."],
     [2, "lauramovies", "Toy Story 3", 5, 128, "   Me hizo llorar como a una nena. Pixar sabe tocar el corazón de grandes y chicos.   "],
