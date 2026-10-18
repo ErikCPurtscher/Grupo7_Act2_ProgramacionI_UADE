@@ -61,13 +61,21 @@ def ingresar_registro(matriz):
 
 
 def normalizar_texto(texto):
-    """Devuelve el texto sin espacios sobrantes (extremos y repetidos),
-    en minúsculas y con la primera letra en mayúscula."""
-    palabras = texto.strip().split()
-    texto_limpio = " ".join(palabras).lower()
-    if len(texto_limpio) > 0:
-        texto_limpio = texto_limpio[0].upper() + texto_limpio[1:]
-    return texto_limpio
+    """Devuelve el texto sin espacios sobrantes, en minúsculas y con la primera
+    letra de cada oración en mayúscula (después de punto, ! o ?)."""
+    palabras = texto.strip().lower().split()
+    resultado = []
+    inicio_oracion = True
+    for palabra in palabras:
+        if inicio_oracion:
+            if palabra[0] == "¡" or palabra[0] == "¿":
+                palabra = palabra[0] + palabra[1:].capitalize()
+            else:
+                palabra = palabra.capitalize()
+        resultado.append(palabra)
+        ultimo = palabra[-1]
+        inicio_oracion = ultimo == "." or ultimo == "!" or ultimo == "?"
+    return " ".join(resultado)
 
 
 def separar_palabras(texto):
